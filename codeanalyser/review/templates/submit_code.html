@@ -1,0 +1,35 @@
+<!-- review/templates/review/submit_code.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Submit Code for Review</title>
+    <style>
+        
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+textarea {
+    width: 100%;
+}
+
+    </style>
+</head>
+<body>
+    <h1>Code Review Assistant</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label>Title:</label>
+        <input type="text" name="title" required><br>
+        <label>Language:</label>
+        <input type="text" name="language" required><br>
+        <label>Code:</label><br>
+        <textarea name="code" rows="10" cols="50" required></textarea><br>
+        <button type="submit">Submit</button>
+    </form>
+    {% if review %}
+        <h2>Review Result</h2>
+        <pre>{{ review }}</pre>
+    {% endif %}
+</body>
+</html>
